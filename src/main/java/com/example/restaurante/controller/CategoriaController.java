@@ -22,7 +22,7 @@ public class CategoriaController {
 
     @Operation(summary = "Endpoint que permite listar las Categorias",
             description = "Endpoint que permite listar las Categorias")
-    @GetMapping("categorias")
+    @GetMapping("/categorias")
     public ResponseEntity<List<CategoriaDTO>> listarCategorias(){
         return new ResponseEntity<>(categoriaService.listarCategorias(), HttpStatus.OK);
     }
@@ -32,12 +32,12 @@ public class CategoriaController {
         return new ResponseEntity<>(categoriaService.obtenerCategoriaPorId(categoriaId), HttpStatus.OK);
     }
 
-    @PostMapping("categorias")
+    @PostMapping("/categorias")
     public ResponseEntity<CategoriaDTO> registrarCategoria(@RequestBody CategoriaCreateDTO categoriaCreateDTO){
         return new ResponseEntity<>(categoriaService.registrarCategoria(categoriaCreateDTO), HttpStatus.OK);
     }
 
-    @PutMapping("categorias")
+    @PutMapping("/categorias")
     public ResponseEntity<CategoriaDTO> actualizarCategoria(@RequestBody CategoriaUpdateDTO categoriaUpdateDTO) {
         return new ResponseEntity<>(categoriaService.actualizarCategoria(categoriaUpdateDTO),HttpStatus.OK);
     }
