@@ -1,8 +1,10 @@
 package com.example.restaurante.dtos;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class UsuarioDTO {
 
     private Integer id;

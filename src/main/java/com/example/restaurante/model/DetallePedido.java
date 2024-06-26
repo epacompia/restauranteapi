@@ -1,10 +1,8 @@
 package com.example.restaurante.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -12,18 +10,26 @@ import java.math.BigDecimal;
 @Table(name = "detallepedidos")
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class DetallePedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer cantidad;
-    private BigDecimal precio;
-    @ManyToOne()
-    @JoinColumn(name = "pedidoid")
+    private int cantidad;
+    private double precio;
+    private double total;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "pedidoid", nullable = false)
     private Pedido pedido;
     @ManyToOne()
     @JoinColumn(name = "productoid")
     private Producto producto;
+
+
+    public double getTotal() {
+        return cantidad * precio;
+    }
 }

@@ -1,10 +1,12 @@
 package com.example.restaurante.dtos;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @Data
+@ToString
 public class ProductoDTO {
 
     private Integer id;

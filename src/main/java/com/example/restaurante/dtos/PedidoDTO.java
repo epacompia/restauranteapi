@@ -1,9 +1,8 @@
 package com.example.restaurante.dtos;
 
-import com.example.restaurante.model.Usuario;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class PedidoDTO {
@@ -13,6 +12,7 @@ public class PedidoDTO {
     private String hora;
     private Double total;
     private Integer estado;
+    private List<DetallePedidoDTO> detallePedido;
     private UsuarioDTO usuario;
 
 
