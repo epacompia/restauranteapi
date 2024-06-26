@@ -26,7 +26,8 @@ public interface PedidoMapper {
         DetallePedidoDTO detallePedidoDTO = new DetallePedidoDTO();
         detallePedidoDTO.setId(detallePedido.getId());
         detallePedidoDTO.setCantidad(detallePedido.getCantidad());
-        detallePedidoDTO.setPedido(PedidoMapper.instancia.pedidoAPedidoDTO(detallePedido.getPedido()));
+        detallePedidoDTO.setPrecio(detallePedido.getPrecio());
+        //detallePedidoDTO.setPedido(PedidoMapper.instancia.pedidoAPedidoDTO(detallePedido.getPedido()));
         detallePedidoDTO.setProducto(ProductoMapper.instancia.productoAProductoDTO(detallePedido.getProducto()));
         detallePedidoDTO.setTotal(detallePedido.getTotal());
         return detallePedidoDTO;
@@ -45,6 +46,7 @@ public interface PedidoMapper {
     default DetallePedido mapDetallePedidoCreateDTOToDetallePedido(DetallePedidoCreateDTO detallePedidoDTO){
         DetallePedido detallePedido = new DetallePedido();
         detallePedido.setCantidad(detallePedidoDTO.getCantidad());
+        detallePedido.setPrecio(detallePedidoDTO.getPrecio());
         detallePedido.setProducto(ProductoMapper.instancia.productoDTOAProducto(detallePedidoDTO.getProducto()));
         detallePedido.setTotal(detallePedidoDTO.getTotal());
         return detallePedido;

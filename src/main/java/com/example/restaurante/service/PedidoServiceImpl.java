@@ -35,18 +35,14 @@ public class PedidoServiceImpl implements PedidoService{
     @Override
     public PedidoDTO registrarPedido(PedidoCreateDTO pedidoCreateDTO) {
         Pedido pedido=PedidoMapper.instancia.pedidoCreateDTOAPedido(pedidoCreateDTO);
-        System.out.println(pedido.toString());
-        double totalGeneral = 0.00;
         pedido.getDetallePedido().forEach(
                 det -> {
                     det.setPedido(pedido);
                     det.setTotal(det.getCantidad()*det.getPrecio());
-
                 }
-
         );
+        pedido.setTotal(pedido.getTotal());
         Pedido respuestaEntity=pedidoRepository.save(pedido);
-        System.out.println("second: ");
         return PedidoMapper.instancia.pedidoAPedidoDTO(respuestaEntity);
     }
 
